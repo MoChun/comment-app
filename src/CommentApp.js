@@ -9,6 +9,18 @@ class CommentApp extends Component {
             comments:[]
         }
     }
+    _loadComments= () => {
+        let comments = localStorage.getItem('comments')
+        if(comments){
+            comments.JSON.parse(comments)
+            this.setState({comments})
+        }
+    }
+    _saveComments=(comments: any) => {
+        localStorage.setItem('comments',JSON.stringify(comments))
+
+    }
+
     handleSubmitComment(comment){
         this.state.comments.push(comment)
         this.setState({
